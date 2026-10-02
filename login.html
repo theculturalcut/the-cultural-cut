@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Entrar | The Cultural Cut</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/icons/icon.svg" type="image/png">
+</head>
+<body>
+
+  <main class="auth">
+    <div class="logo">
+        <img src="assets/logo/logo-black.svg">
+    </div>
+
+    <div class="auth__box">
+      <h1 class="auth__title">Área da redação</h1>
+      <p class="auth__text">Entre com o seu e-mail e a sua senha.</p>
+
+      <form class="auth__form" id="form-login" novalidate>
+        <div class="message message--error" id="login-mensagem" role="alert" hidden></div>
+
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input class="input" id="email" name="email" type="email" autocomplete="username" required>
+        </div>
+
+        <div class="field">
+          <label for="senha">Senha</label>
+          <input class="input" id="senha" name="senha" type="password" autocomplete="current-password" required>
+        </div>
+
+        <div class="field field--check">
+          <input type="checkbox" id="mostrar-senha">
+          <label for="mostrar-senha">Mostrar senha</label>
+        </div>
+
+        <button class="btn btn--block" type="submit" id="login-botao">Entrar</button>
+      </form>
+
+      <p class="auth__links"><a href="index.html">Voltar ao site</a></p>
+    </div>
+  </main>
+
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

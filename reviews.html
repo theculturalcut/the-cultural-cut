@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reviews | The Cultural Cut</title>
+  <meta name="description" content="Críticas e notas de filmes, séries, discos e mais.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/icons/icon.svg" type="image/png">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main id="conteudo">
+    <div class="container">
+      <header class="page-header">
+        <h1 class="page-header__title">Reviews</h1>
+        <p class="page-header__text">Críticas e notas de filmes, séries, discos e mais.</p>
+      </header>
+
+      <div class="toolbar">
+        <div class="chips" id="chips" role="group" aria-label="Filtrar por categoria"></div>
+        <div class="toolbar__tools">
+          <button type="button" class="chip" id="favoritos" aria-pressed="false">Favoritos da Redação</button>
+          <label class="visually-hidden" for="ordem">Ordenar por</label>
+          <select class="select" id="ordem">
+            <option value="recentes">Mais recentes</option>
+            <option value="nota">Maiores notas</option>
+          </select>
+          <label class="visually-hidden" for="busca">Buscar reviews</label>
+          <input class="input" id="busca" type="search" placeholder="Buscar reviews" autocomplete="off">
+        </div>
+      </div>
+
+      <p class="list-summary" id="resultado" aria-live="polite"></p>
+      <div class="grid grid--4" id="lista" aria-busy="true"></div>
+      <nav class="pagination" id="paginacao" aria-label="Paginação"></nav>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="module" src="js/reviews.js"></script>
+</body>
+</html>

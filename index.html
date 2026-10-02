@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Cultural Cut | Revista digital de cultura</title>
+  <meta name="description" content="Artigos e reviews sobre música, cinema, séries e variedades.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/icons/icon.svg" type="image/png">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main id="conteudo" class="home">
+    <h1 class="visually-hidden">The Cultural Cut, revista digital de cultura</h1>
+
+    <noscript>
+      <div class="container section">
+        <p class="message message--error">Ative o JavaScript no navegador para ver o conteúdo do site.</p>
+      </div>
+    </noscript>
+
+    <!-- Destaques: carrossel com até 5 itens (preenchido por js/home.js) -->
+    <section class="container hero-slider" id="destaques" aria-roledescription="carousel" aria-label="Destaques"></section>
+
+    <div class="container home-grid">
+
+      <div class="home-main">
+        <section class="home-section" aria-labelledby="titulo-novidades">
+          <h2 class="home-heading" id="titulo-novidades">Novidades</h2>
+          <div class="mini-grid" id="novidades"></div>
+          <div class="home-more">
+            <a class="btn btn--ghost btn--arrow" href="artigos.html">Ver Mais
+              <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 10h13M11 4l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </section>
+
+        <section class="home-section" aria-labelledby="titulo-reviews">
+          <h2 class="home-heading" id="titulo-reviews">Últimas Reviews</h2>
+          <div class="review-grid" id="ultimas-reviews"></div>
+          <div class="home-more">
+            <a class="btn btn--ghost btn--arrow" href="reviews.html">Ver Mais
+              <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 10h13M11 4l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <aside class="home-side" aria-label="Mais lidos e favoritos">
+        <section class="side-section" aria-labelledby="titulo-em-alta">
+          <h2 class="home-heading" id="titulo-em-alta"><span aria-hidden="true">🔥</span> Em Alta</h2>
+          <div id="em-alta"></div>
+        </section>
+
+        <section class="side-section" aria-labelledby="titulo-favoritos">
+          <h2 class="home-heading" id="titulo-favoritos">Favoritos da Redação</h2>
+          <div id="favoritos"></div>
+        </section>
+      </aside>
+
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="module" src="js/home.js"></script>
+</body>
+</html>

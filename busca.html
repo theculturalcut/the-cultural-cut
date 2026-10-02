@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Busca | The Cultural Cut</title>
+  <meta name="description" content="Busque artigos e reviews no The Cultural Cut.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/icons/icon.svg" type="image/png">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main id="conteudo">
+    <div class="container">
+      <header class="page-header">
+        <h1 class="page-header__title">Busca</h1>
+        <form class="search-form" action="busca.html" method="get" role="search">
+          <label class="visually-hidden" for="busca-termo">Buscar artigos e reviews</label>
+          <input class="input" id="busca-termo" name="q" type="search" placeholder="Buscar artigos e reviews" autocomplete="off">
+          <button class="btn" type="submit">Buscar</button>
+        </form>
+      </header>
+
+      <p class="list-summary" id="resultado" aria-live="polite"></p>
+
+      <section class="search-section" id="secao-artigos" aria-labelledby="titulo-artigos" hidden>
+        <div class="section__head">
+          <h2 class="section__title" id="titulo-artigos">Artigos</h2>
+          <a class="section__link" id="link-artigos" href="artigos.html" hidden>Ver todos</a>
+        </div>
+        <div class="grid grid--3" id="lista-artigos"></div>
+      </section>
+
+      <section class="search-section" id="secao-reviews" aria-labelledby="titulo-reviews" hidden>
+        <div class="section__head">
+          <h2 class="section__title" id="titulo-reviews">Reviews</h2>
+          <a class="section__link" id="link-reviews" href="reviews.html" hidden>Ver todas</a>
+        </div>
+        <div class="grid grid--4" id="lista-reviews"></div>
+      </section>
+
+      <div id="busca-vazio"></div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="module" src="js/busca.js"></script>
+</body>
+</html>

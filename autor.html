@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Autor | The Cultural Cut</title>
+  <meta name="description" content="Artigos e reviews do The Cultural Cut.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/icons/icon.svg" type="image/png">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main id="conteudo">
+    <div class="container">
+
+      <!-- Foto, nome e mini bio (preenchido por js/autor.js) -->
+      <header class="author-hero" id="autor-cabecalho" aria-busy="true"></header>
+
+      <section class="author-section" id="secao-artigos" aria-labelledby="titulo-artigos" hidden>
+        <div class="section__head">
+          <h2 class="section__title" id="titulo-artigos">Artigos</h2>
+        </div>
+        <div class="grid grid--3" id="lista-artigos"></div>
+        <p class="author-more">
+          <button type="button" class="btn btn--ghost" id="mais-artigos" hidden>Mostrar mais artigos</button>
+        </p>
+      </section>
+
+      <section class="author-section" id="secao-reviews" aria-labelledby="titulo-reviews" hidden>
+        <div class="section__head">
+          <h2 class="section__title" id="titulo-reviews">Reviews</h2>
+        </div>
+        <div class="grid grid--4" id="lista-reviews"></div>
+        <p class="author-more">
+          <button type="button" class="btn btn--ghost" id="mais-reviews" hidden>Mostrar mais reviews</button>
+        </p>
+      </section>
+
+      <div id="autor-vazio"></div>
+
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="module" src="js/autor.js"></script>
+</body>
+</html>

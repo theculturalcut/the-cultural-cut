@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artigo | The Cultural Cut</title>
+  <meta name="description" content="Revista digital de cultura.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/icons/icon.svg" type="image/png">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <main id="conteudo">
+    <article id="artigo" aria-busy="true"></article>
+
+    <section class="section section--gray" id="relacionados" aria-labelledby="titulo-relacionados" hidden>
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title" id="titulo-relacionados">Leia também</h2>
+          <a class="section__link" href="artigos.html">Ver todos os artigos</a>
+        </div>
+        <div class="grid grid--3" id="lista-relacionados"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script type="module" src="js/artigo.js"></script>
+</body>
+</html>
