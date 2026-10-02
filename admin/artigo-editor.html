@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Novo artigo | Painel | The Cultural Cut</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="icon" href="../assets/icons/favicon.png" type="image/png">
+</head>
+<body class="admin is-checking">
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="admin-sidebar" aria-label="Menu do painel"></aside>
+
+    <div class="admin-main">
+      <header class="admin-topbar" id="admin-topbar"></header>
+
+      <main class="admin-content" id="conteudo">
+        <div class="admin-page-header">
+          <div>
+            <h1 class="admin-page-title" id="titulo-pagina">Novo artigo</h1>
+            <p class="admin-page-subtitle">Escreva em Markdown e publique quando estiver pronto.</p>
+          </div>
+          <div class="admin-actions">
+            <a class="btn btn--ghost" href="artigos.html">Voltar para a lista</a>
+            <a class="btn btn--ghost" id="ver-no-site" href="#" target="_blank" rel="noopener" hidden>Ver no site</a>
+          </div>
+        </div>
+
+        <!-- Barra fixa com o botão de salvar -->
+        <div class="editor-bar">
+          <span class="editor-bar__state" id="estado-salvo" aria-live="polite"></span>
+          <button type="button" class="btn" id="salvar">Salvar rascunho</button>
+        </div>
+
+        <div class="message message--error editor-errors" id="editor-erros" role="alert" hidden></div>
+        <div class="message message--success" id="editor-aviso" role="status" hidden></div>
+
+        <form class="editor-grid" id="editor-form" novalidate>
+
+          <!-- Coluna principal -->
+          <div class="editor-main">
+
+            <section class="panel">
+              <div class="panel__body">
+                <div class="field">
+                  <label for="titulo">Título</label>
+                  <input class="input input--title" id="titulo" type="text" maxlength="200" autocomplete="off" required>
+                </div>
+
+                <div class="field">
+                  <label for="slug">Endereço (slug)</label>
+                  <div class="slug-row">
+                    <span class="slug-prefix">artigo.html?slug=</span>
+                    <input class="input" id="slug" type="text" maxlength="200" autocomplete="off" spellcheck="false" required>
+                    <button type="button" class="btn btn--ghost btn--sm" id="gerar-slug">Gerar do título</button>
+                  </div>
+                  <p class="field__hint" id="slug-dica">Só letras minúsculas sem acento, números e hífens. É criado sozinho a partir do título.</p>
+                </div>
+
+                <div class="field">
+                  <label for="resumo">Resumo</label>
+                  <textarea class="textarea" id="resumo" rows="3" maxlength="500"></textarea>
+                  <p class="field__hint"><span id="contador-resumo">0</span> caracteres (recomendado até 300). Aparece nas listas e abaixo do título.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel__head">
+                <h2 class="panel__title">Texto</h2>
+                <div class="md-tabs" role="group" aria-label="Modo do editor">
+                  <button type="button" class="chip is-active" id="aba-escrever" aria-pressed="true">Escrever</button>
+                  <button type="button" class="chip" id="aba-previa" aria-pressed="false">Pré-visualizar</button>
+                </div>
+              </div>
+
+              <div id="painel-escrever">
+                <div class="md-toolbar" id="md-barra" role="toolbar" aria-label="Formatação">
+                  <button type="button" class="md-btn" data-md="bold" title="Negrito" aria-label="Negrito"><strong>N</strong></button>
+                  <button type="button" class="md-btn" data-md="italic" title="Itálico" aria-label="Itálico"><em>I</em></button>
+                  <button type="button" class="md-btn" data-md="h2" title="Subtítulo" aria-label="Subtítulo">Título</button>
+                  <button type="button" class="md-btn" data-md="h3" title="Subtítulo menor" aria-label="Subtítulo menor">Subtítulo</button>
+                  <button type="button" class="md-btn" data-md="quote" title="Citação" aria-label="Citação">Citação</button>
+                  <button type="button" class="md-btn" data-md="list" title="Lista" aria-label="Lista">Lista</button>
+                  <button type="button" class="md-btn" data-md="link" title="Link" aria-label="Link">Link</button>
+                  <button type="button" class="md-btn" data-md="image" title="Inserir imagem" aria-label="Inserir imagem">Imagem</button>
+                  <button type="button" class="md-btn" data-md="table" title="Inserir tabela" aria-label="Inserir tabela">Tabela</button>
+                </div>
+                <p class="md-status" id="texto-status" aria-live="polite"></p>
+                <label class="visually-hidden" for="texto">Texto do artigo</label>
+                <textarea class="md-area" id="texto" spellcheck="true"></textarea>
+              </div>
+
+              <div class="md-preview" id="painel-previa" hidden>
+                <div class="prose" id="previa-conteudo"></div>
+              </div>
+            </section>
+
+          </div>
+
+          <!-- Coluna lateral -->
+          <aside class="editor-side" aria-label="Opções do artigo">
+
+            <section class="panel">
+              <div class="panel__head"><h2 class="panel__title">Publicação</h2></div>
+              <div class="panel__body">
+                <div class="field">
+                  <label for="status">Status</label>
+                  <select class="select" id="status">
+                    <option value="draft">Rascunho</option>
+                    <option value="review">Em revisão</option>
+                    <option value="scheduled">Agendado</option>
+                    <option value="published">Publicado</option>
+                    <option value="archived">Arquivado</option>
+                  </select>
+                  <p class="field__hint" id="status-dica"></p>
+                </div>
+
+                <div class="field" id="campo-agendamento" hidden>
+                  <label for="agendamento">Publicar em</label>
+                  <input class="input" id="agendamento" type="datetime-local">
+                  <p class="field__hint">Horário do seu navegador.</p>
+                </div>
+
+                <div class="field field--check">
+                  <input type="checkbox" id="destaque">
+                  <label for="destaque">Destacar na página inicial</label>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel__head"><h2 class="panel__title">Organização</h2></div>
+              <div class="panel__body">
+                <div class="field">
+                  <label for="categoria">Categoria</label>
+                  <select class="select" id="categoria"></select>
+                </div>
+                <div class="field">
+                  <label for="autor">Autor</label>
+                  <select class="select" id="autor"></select>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel__head"><h2 class="panel__title">Tags</h2></div>
+              <div class="panel__body">
+                <ul class="tag-list" id="tags-lista" aria-label="Tags do artigo"></ul>
+                <div class="field">
+                  <label for="tags-entrada">Adicionar tag</label>
+                  <input class="input" id="tags-entrada" type="text" list="tags-sugestoes" maxlength="40" autocomplete="off" placeholder="Digite e aperte Enter">
+                  <datalist id="tags-sugestoes"></datalist>
+                  <p class="field__hint" id="tags-dica"></p>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel__head"><h2 class="panel__title">Imagem de capa</h2></div>
+              <div class="panel__body" id="capa-zona">
+                <img class="cover-preview" id="capa-previa" alt="Prévia da capa" hidden>
+                <p class="field__hint is-error" id="capa-erro" hidden>Não foi possível carregar essa imagem. Confira o endereço.</p>
+
+                <div class="cover-actions">
+                  <button type="button" class="btn btn--ghost btn--sm" id="capa-escolher">Escolher imagem</button>
+                  <button type="button" class="btn btn--ghost btn--sm" id="capa-remover" hidden>Remover capa</button>
+                </div>
+                <p class="field__hint" id="capa-status" aria-live="polite"></p>
+
+                <details class="cover-address">
+                  <summary>Usar um endereço em vez de enviar</summary>
+                  <div class="field">
+                    <label for="capa">Endereço da imagem</label>
+                    <input class="input" id="capa" type="text" autocomplete="off" spellcheck="false" placeholder="articles/foto.jpg ou https://...">
+                    <p class="field__hint">Um caminho do Storage (como <code>articles/foto.jpg</code>) ou um link completo.</p>
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <section class="panel">
+              <details>
+                <summary>SEO (Google e compartilhamento)</summary>
+                <div class="panel__body">
+                  <div class="field">
+                    <label for="seo-titulo">Título para o Google</label>
+                    <input class="input" id="seo-titulo" type="text" autocomplete="off">
+                    <p class="field__hint"><span id="contador-seo-titulo">0</span>/60. Se ficar em branco, usamos o título do artigo.</p>
+                  </div>
+                  <div class="field">
+                    <label for="seo-descricao">Descrição para o Google</label>
+                    <textarea class="textarea" id="seo-descricao" rows="3"></textarea>
+                    <p class="field__hint"><span id="contador-seo-descricao">0</span>/160. Se ficar em branco, usamos o resumo.</p>
+                  </div>
+                </div>
+              </details>
+            </section>
+
+          </aside>
+
+          <!-- Seletores de arquivo (ficam escondidos; os botões abrem eles) -->
+          <input type="file" id="capa-arquivo" accept="image/jpeg,image/png,image/webp,image/gif" hidden>
+          <input type="file" id="imagem-arquivo" accept="image/jpeg,image/png,image/webp,image/gif" hidden>
+        </form>
+      </main>
+    </div>
+  </div>
+
+  <!-- Janela para inserir imagem no texto -->
+  <dialog class="dialog" id="dialogo-imagem" aria-labelledby="dialogo-imagem-titulo">
+    <form method="dialog" class="dialog__box">
+      <h2 class="dialog__title" id="dialogo-imagem-titulo">Inserir imagem no texto</h2>
+      <img class="dialog__preview" id="imagem-previa" alt="">
+
+      <div class="field">
+        <label for="imagem-alt">Descrição da imagem</label>
+        <input class="input" id="imagem-alt" type="text" maxlength="200" autocomplete="off">
+        <p class="field__hint">Para quem não enxerga a imagem. Descreva o que aparece nela.</p>
+      </div>
+
+      <div class="field">
+        <label for="imagem-legenda">Legenda (opcional)</label>
+        <input class="input" id="imagem-legenda" type="text" maxlength="200" autocomplete="off">
+        <p class="field__hint">Aparece embaixo da imagem. Bom para créditos, como "Foto: divulgação".</p>
+      </div>
+
+      <!-- "Inserir" vem primeiro no código para o Enter confirmar; o CSS inverte a ordem na tela -->
+      <div class="dialog__actions dialog__actions--reverse">
+        <button type="submit" class="btn" value="confirm">Inserir</button>
+        <button type="submit" class="btn btn--ghost" value="cancel">Cancelar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="js/falha.js"></script>
+  <script type="module" src="js/artigo-editor.js"></script>
+</body>
+</html>

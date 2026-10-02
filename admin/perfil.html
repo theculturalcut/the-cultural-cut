@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Meu perfil | Painel | The Cultural Cut</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="icon" href="../assets/icons/favicon.png" type="image/png">
+</head>
+<body class="admin is-checking">
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="admin-sidebar" aria-label="Menu do painel"></aside>
+
+    <div class="admin-main">
+      <header class="admin-topbar" id="admin-topbar"></header>
+
+      <main class="admin-content" id="conteudo">
+        <div class="admin-page-header">
+          <div>
+            <h1 class="admin-page-title">Meu perfil</h1>
+            <p class="admin-page-subtitle">Como você aparece como autor no site.</p>
+          </div>
+          <div class="admin-actions">
+            <a class="btn btn--ghost" id="perfil-pagina" href="#" target="_blank" rel="noopener">Ver minha página</a>
+          </div>
+        </div>
+
+        <div class="message message--error" id="perfil-erros" role="alert" hidden></div>
+        <div class="message message--success" id="perfil-aviso" role="status" hidden></div>
+
+        <form class="settings-form" id="form-perfil" novalidate>
+          <section class="panel">
+            <div class="panel__head"><h2 class="panel__title">Dados do autor</h2></div>
+            <div class="panel__body">
+
+              <!-- Foto -->
+              <div class="avatar-edit" id="avatar-area">
+                <div class="avatar-edit__frame">
+                  <img id="avatar-imagem" alt="" hidden>
+                  <span id="avatar-inicial" aria-hidden="true">?</span>
+                </div>
+                <div class="avatar-edit__actions">
+                  <button type="button" class="btn btn--ghost btn--sm" id="avatar-escolher">Escolher foto</button>
+                  <button type="button" class="btn btn--ghost btn--sm" id="avatar-remover" hidden>Remover foto</button>
+                  <p class="field__hint" id="avatar-status" aria-live="polite"></p>
+                </div>
+                <input type="file" id="avatar-arquivo" accept="image/jpeg,image/png,image/webp,image/gif" hidden>
+              </div>
+
+              <div class="field">
+                <label for="perfil-nome">Nome</label>
+                <input class="input" id="perfil-nome" type="text" maxlength="80" autocomplete="name" required>
+              </div>
+
+              <div class="field">
+                <label for="perfil-bio">Mini bio</label>
+                <textarea class="textarea" id="perfil-bio" rows="3" maxlength="300"></textarea>
+                <p class="field__hint"><span id="perfil-contador-bio">0</span>/300. Aparece na sua página de autor.</p>
+              </div>
+
+              <div class="field">
+                <label for="perfil-email">E-mail de acesso</label>
+                <input class="input" id="perfil-email" type="text" readonly>
+              </div>
+
+              <div class="field">
+                <label for="perfil-slug">Endereço da sua página</label>
+                <input class="input" id="perfil-slug" type="text" readonly>
+                <p class="field__hint">Para mudar o endereço ou o papel, peça a um administrador.</p>
+              </div>
+
+              <div class="field">
+                <label for="perfil-papel">Papel</label>
+                <input class="input" id="perfil-papel" type="text" readonly>
+              </div>
+            </div>
+          </section>
+
+          <div class="settings-actions">
+            <button type="submit" class="btn" id="perfil-salvar">Salvar perfil</button>
+            <span class="editor-bar__state" id="perfil-estado" aria-live="polite"></span>
+          </div>
+        </form>
+
+        <form class="settings-form settings-form--spaced" id="form-senha" novalidate>
+          <section class="panel">
+            <div class="panel__head"><h2 class="panel__title">Trocar a senha</h2></div>
+            <div class="panel__body">
+              <div class="message message--error" id="senha-erros" role="alert" hidden></div>
+              <div class="message message--success" id="senha-aviso" role="status" hidden></div>
+
+              <div class="field">
+                <label for="senha-nova">Nova senha</label>
+                <input class="input" id="senha-nova" type="password" autocomplete="new-password" minlength="8">
+                <p class="field__hint">Pelo menos 8 caracteres, misturando letras e números.</p>
+              </div>
+              <div class="field">
+                <label for="senha-confirmar">Repita a nova senha</label>
+                <input class="input" id="senha-confirmar" type="password" autocomplete="new-password">
+              </div>
+              <div>
+                <button type="submit" class="btn" id="senha-salvar">Trocar senha</button>
+              </div>
+            </div>
+          </section>
+        </form>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/falha.js"></script>
+  <script type="module" src="js/perfil.js"></script>
+</body>
+</html>

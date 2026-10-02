@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Usuários | Painel | The Cultural Cut</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="icon" href="../assets/icons/favicon.png" type="image/png">
+</head>
+<body class="admin is-checking">
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="admin-sidebar" aria-label="Menu do painel"></aside>
+
+    <div class="admin-main">
+      <header class="admin-topbar" id="admin-topbar"></header>
+
+      <main class="admin-content" id="conteudo">
+        <div class="admin-page-header">
+          <div>
+            <h1 class="admin-page-title">Usuários</h1>
+            <p class="admin-page-subtitle">Quem tem acesso ao painel e aparece como autor no site.</p>
+          </div>
+        </div>
+
+        <div class="message" id="aviso-lista" role="status" hidden></div>
+
+        <div id="tabela"></div>
+
+        <section class="panel cat-help">
+          <details>
+            <summary>Como adicionar ou remover uma pessoa</summary>
+            <div class="panel__body">
+              <p>
+                Criar e apagar contas é feito no painel do Supabase, porque isso exige uma chave que
+                não pode ficar no site.
+              </p>
+              <p><strong>Para adicionar:</strong></p>
+              <ol>
+                <li>No Supabase, abra <strong>Authentication → Users → Add user → Create new user</strong>.</li>
+                <li>Preencha o e-mail e uma senha, e marque <strong>Auto Confirm User</strong>.</li>
+                <li>A pessoa aparece nesta lista como <strong>Editor</strong>. Clique em <strong>Editar</strong> para colocar o nome, a foto e a bio.</li>
+                <li>Se ela for administradora, mude o papel aqui.</li>
+              </ol>
+              <p><strong>Para remover:</strong> apague o usuário em <strong>Authentication → Users</strong>. Os artigos e as reviews dela continuam no site, só que sem autor.</p>
+              <p>Cada pessoa pode trocar a própria senha, e editar a própria foto e bio, na página <strong>Meu perfil</strong>.</p>
+            </div>
+          </details>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Janela para editar -->
+  <dialog class="dialog dialog--wide" id="dialogo-usuario" aria-labelledby="dialogo-usuario-titulo">
+    <form class="dialog__box" id="form-usuario" novalidate>
+      <h2 class="dialog__title" id="dialogo-usuario-titulo">Editar usuário</h2>
+
+      <div class="message message--error" id="usr-erro" role="alert" hidden></div>
+
+      <!-- Foto -->
+      <div class="avatar-edit" id="avatar-area">
+        <div class="avatar-edit__frame">
+          <img id="avatar-imagem" alt="" hidden>
+          <span id="avatar-inicial" aria-hidden="true">?</span>
+        </div>
+        <div class="avatar-edit__actions">
+          <button type="button" class="btn btn--ghost btn--sm" id="avatar-escolher">Escolher foto</button>
+          <button type="button" class="btn btn--ghost btn--sm" id="avatar-remover" hidden>Remover foto</button>
+          <p class="field__hint" id="avatar-status" aria-live="polite"></p>
+        </div>
+        <input type="file" id="avatar-arquivo" accept="image/jpeg,image/png,image/webp,image/gif" hidden>
+      </div>
+
+      <div class="field">
+        <label for="usr-nome">Nome</label>
+        <input class="input" id="usr-nome" type="text" maxlength="80" autocomplete="off" required>
+      </div>
+
+      <div class="field">
+        <label for="usr-slug">Endereço da página do autor (slug)</label>
+        <input class="input" id="usr-slug" type="text" maxlength="80" autocomplete="off" spellcheck="false" required>
+        <p class="field__hint">Mudar o endereço muda o link da página pública (autor.html?slug=...). Links antigos deixam de funcionar.</p>
+      </div>
+
+      <div class="field">
+        <label for="usr-bio">Mini bio</label>
+        <textarea class="textarea" id="usr-bio" rows="3" maxlength="300"></textarea>
+        <p class="field__hint"><span id="usr-contador-bio">0</span>/300. Aparece na página do autor.</p>
+      </div>
+
+      <div class="field">
+        <label for="usr-papel">Papel</label>
+        <select class="select" id="usr-papel">
+          <option value="editor">Editor</option>
+          <option value="admin">Administrador</option>
+        </select>
+        <p class="field__hint" id="usr-papel-dica"></p>
+      </div>
+
+      <div class="dialog__actions">
+        <button type="button" class="btn btn--ghost" id="usr-cancelar">Cancelar</button>
+        <button type="submit" class="btn" id="usr-salvar">Salvar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="js/falha.js"></script>
+  <script type="module" src="js/usuarios.js"></script>
+</body>
+</html>

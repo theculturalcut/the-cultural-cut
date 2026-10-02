@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Artigos | Painel | The Cultural Cut</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="icon" href="../assets/icons/favicon.png" type="image/png">
+</head>
+<body class="admin is-checking">
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="admin-sidebar" aria-label="Menu do painel"></aside>
+
+    <div class="admin-main">
+      <header class="admin-topbar" id="admin-topbar"></header>
+
+      <main class="admin-content" id="conteudo">
+        <div class="admin-page-header">
+          <div>
+            <h1 class="admin-page-title">Artigos</h1>
+            <p class="admin-page-subtitle">Crie, edite e publique os artigos do site.</p>
+          </div>
+          <div class="admin-actions">
+            <a class="btn" href="artigo-editor.html">Novo artigo</a>
+          </div>
+        </div>
+
+        <div class="admin-toolbar">
+          <div class="chips" id="filtro-status" role="group" aria-label="Filtrar por status"></div>
+          <div class="admin-toolbar__tools">
+            <label class="visually-hidden" for="filtro-categoria">Filtrar por categoria</label>
+            <select class="select" id="filtro-categoria"></select>
+            <label class="visually-hidden" for="busca">Buscar pelo título</label>
+            <input class="input" id="busca" type="search" placeholder="Buscar pelo título" autocomplete="off">
+          </div>
+        </div>
+
+        <p class="admin-summary" id="resultado" aria-live="polite"></p>
+        <div class="message" id="aviso-lista" role="status" hidden></div>
+
+        <div id="tabela"></div>
+        <nav class="pagination" id="paginacao" aria-label="Paginação"></nav>
+      </main>
+    </div>
+  </div>
+
+  <!-- Janela de confirmação para excluir -->
+  <dialog class="dialog" id="dialogo-excluir" aria-labelledby="dialogo-titulo">
+    <form method="dialog" class="dialog__box">
+      <h2 class="dialog__title" id="dialogo-titulo">Excluir artigo?</h2>
+      <p class="dialog__text" id="dialogo-texto"></p>
+      <div class="dialog__actions">
+        <button type="submit" class="btn btn--ghost" value="cancel">Cancelar</button>
+        <button type="submit" class="btn btn--danger" value="confirm">Excluir</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="js/falha.js"></script>
+  <script type="module" src="js/artigos.js"></script>
+</body>
+</html>

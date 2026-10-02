@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Dashboard | The Cultural Cut</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="icon" href="../assets/icons/icon.svg" type="image/png">
+</head>
+<body class="admin is-checking">
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="admin-sidebar" aria-label="Menu do painel"></aside>
+
+    <div class="admin-main">
+      <header class="admin-topbar" id="admin-topbar"></header>
+
+      <main class="admin-content" id="conteudo">
+        <div class="admin-page-header">
+          <div>
+            <h1 class="admin-page-title">Dashboard</h1>
+            <p class="admin-page-subtitle" id="saudacao"></p>
+          </div>
+          <div class="admin-actions">
+            <a class="btn btn--ghost" href="review-editor.html">Nova review</a>
+            <a class="btn" href="artigo-editor.html">Novo artigo</a>
+          </div>
+        </div>
+
+        <div class="message message--error" id="aviso" role="alert" hidden>
+          Você não tem permissão para acessar essa página.
+        </div>
+
+        <section class="stats" id="stats" aria-label="Resumo"></section>
+
+        <div class="dash-grid">
+          <section class="panel" aria-labelledby="titulo-recentes">
+            <div class="panel__head">
+              <h2 class="panel__title" id="titulo-recentes">Editados recentemente</h2>
+            </div>
+            <div id="recentes"></div>
+          </section>
+
+          <section class="panel" aria-labelledby="titulo-agendados">
+            <div class="panel__head">
+              <h2 class="panel__title" id="titulo-agendados">Próximas publicações</h2>
+            </div>
+            <div id="agendados"></div>
+          </section>
+        </div>
+
+        <p class="admin-note" id="aviso-limite" hidden>
+          Os números consideram os 1.000 itens mais recentes de cada tipo.
+        </p>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

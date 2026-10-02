@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Categorias | Painel | The Cultural Cut</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="icon" href="../assets/icons/favicon.png" type="image/png">
+</head>
+<body class="admin is-checking">
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="admin-sidebar" aria-label="Menu do painel"></aside>
+
+    <div class="admin-main">
+      <header class="admin-topbar" id="admin-topbar"></header>
+
+      <main class="admin-content" id="conteudo">
+        <div class="admin-page-header">
+          <div>
+            <h1 class="admin-page-title">Categorias</h1>
+            <p class="admin-page-subtitle">Organize os artigos e as reviews do site.</p>
+          </div>
+          <div class="admin-actions">
+            <button type="button" class="btn" id="nova-categoria">Nova categoria</button>
+          </div>
+        </div>
+
+        <div class="message" id="aviso-lista" role="status" hidden></div>
+
+        <div id="tabela"></div>
+
+        <section class="panel cat-help">
+          <details>
+            <summary>Como criar a página de uma categoria nova</summary>
+            <div class="panel__body">
+              <p>
+                As páginas de categoria do site (música, cinema...) são arquivos do projeto.
+                Depois de criar uma categoria aqui, faça o seguinte:
+              </p>
+              <ol>
+                <li>No projeto, copie o arquivo <code>musica.html</code> e dê a cópia o nome do endereço da categoria, por exemplo <code>games.html</code>.</li>
+                <li>No arquivo novo, troque cinco coisas: o <code>&lt;title&gt;</code>, a <code>description</code>, o <code>data-categoria="games"</code>, o título <code>&lt;h1&gt;</code> e o texto logo abaixo dele.</li>
+                <li>No <code>script.js</code>, acrescente a categoria nas listas <code>NAV_LINKS</code> (menu do topo) e <code>FOOTER_CATEGORIES</code> (rodapé).</li>
+                <li>Envie os arquivos ao GitHub.</li>
+              </ol>
+            </div>
+          </details>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Janela para criar e editar -->
+  <dialog class="dialog" id="dialogo-categoria" aria-labelledby="dialogo-categoria-titulo">
+    <form class="dialog__box" id="form-categoria" novalidate>
+      <h2 class="dialog__title" id="dialogo-categoria-titulo">Nova categoria</h2>
+
+      <div class="message message--error" id="cat-erro" role="alert" hidden></div>
+
+      <div class="field">
+        <label for="cat-nome">Nome</label>
+        <input class="input" id="cat-nome" type="text" maxlength="60" autocomplete="off" required>
+      </div>
+
+      <div class="field">
+        <label for="cat-slug">Endereço (slug)</label>
+        <input class="input" id="cat-slug" type="text" maxlength="60" autocomplete="off" spellcheck="false" required>
+        <p class="field__hint" id="cat-slug-dica"></p>
+      </div>
+
+      <div class="field">
+        <label for="cat-descricao">Descrição</label>
+        <textarea class="textarea" id="cat-descricao" rows="3" maxlength="300"></textarea>
+        <p class="field__hint">Aparece no topo da página da categoria e no Google.</p>
+      </div>
+
+      <div class="dialog__actions">
+        <button type="button" class="btn btn--ghost" id="cat-cancelar">Cancelar</button>
+        <button type="submit" class="btn" id="cat-salvar">Salvar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Janela de confirmação para excluir -->
+  <dialog class="dialog" id="dialogo-excluir" aria-labelledby="dialogo-titulo">
+    <form method="dialog" class="dialog__box">
+      <h2 class="dialog__title" id="dialogo-titulo">Excluir categoria?</h2>
+      <p class="dialog__text" id="dialogo-texto"></p>
+      <div class="dialog__actions">
+        <button type="submit" class="btn btn--ghost" value="cancel">Cancelar</button>
+        <button type="submit" class="btn btn--danger" value="confirm">Excluir</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="js/falha.js"></script>
+  <script type="module" src="js/categorias.js"></script>
+</body>
+</html>

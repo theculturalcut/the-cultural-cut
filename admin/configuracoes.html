@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Configurações | Painel | The Cultural Cut</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="icon" href="../assets/icons/favicon.png" type="image/png">
+</head>
+<body class="admin is-checking">
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar" id="admin-sidebar" aria-label="Menu do painel"></aside>
+
+    <div class="admin-main">
+      <header class="admin-topbar" id="admin-topbar"></header>
+
+      <main class="admin-content" id="conteudo">
+        <div class="admin-page-header">
+          <div>
+            <h1 class="admin-page-title">Configurações</h1>
+            <p class="admin-page-subtitle">Informações que aparecem no rodapé e nas páginas de contato do site.</p>
+          </div>
+        </div>
+
+        <div class="message message--error editor-errors" id="config-erros" role="alert" hidden></div>
+        <div class="message message--success" id="config-aviso" role="status" hidden></div>
+
+        <form class="settings-form" id="form-config" novalidate>
+
+          <section class="panel">
+            <div class="panel__head"><h2 class="panel__title">Sobre o site</h2></div>
+            <div class="panel__body">
+              <div class="field">
+                <label for="cfg-descricao">Descrição do site</label>
+                <textarea class="textarea" id="cfg-descricao" rows="3" maxlength="200"></textarea>
+                <p class="field__hint"><span id="contador-descricao">0</span>/200. Aparece no rodapé, embaixo da logo.</p>
+              </div>
+              <div class="field">
+                <label for="cfg-email">E-mail de contato</label>
+                <input class="input" id="cfg-email" type="email" autocomplete="off" placeholder="contato@exemplo.com">
+                <p class="field__hint">Aparece nas páginas Contato e Publicidade.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel__head"><h2 class="panel__title">Redes sociais (Siga-nos, no rodapé)</h2></div>
+            <div class="panel__body">
+              <p class="field__hint">Cole o endereço completo do perfil, começando com https://. As redes que ficarem em branco não aparecem no site, e se todas ficarem em branco a coluna "Siga-nos" some do rodapé.</p>
+              <div class="field">
+                <label for="cfg-instagram">Instagram</label>
+                <input class="input" id="cfg-instagram" type="url" autocomplete="off" placeholder="https://instagram.com/...">
+              </div>
+              <div class="field">
+                <label for="cfg-x">Twitter (X)</label>
+                <input class="input" id="cfg-x" type="url" autocomplete="off" placeholder="https://x.com/...">
+              </div>
+              <div class="field">
+                <label for="cfg-tiktok">TikTok</label>
+                <input class="input" id="cfg-tiktok" type="url" autocomplete="off" placeholder="https://tiktok.com/@...">
+              </div>
+              <div class="field">
+                <label for="cfg-youtube">YouTube</label>
+                <input class="input" id="cfg-youtube" type="url" autocomplete="off" placeholder="https://youtube.com/...">
+              </div>
+            </div>
+          </section>
+
+          <div class="settings-actions">
+            <button type="submit" class="btn" id="config-salvar">Salvar configurações</button>
+            <span class="editor-bar__state" id="config-estado" aria-live="polite"></span>
+          </div>
+        </form>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/falha.js"></script>
+  <script type="module" src="js/configuracoes.js"></script>
+</body>
+</html>
