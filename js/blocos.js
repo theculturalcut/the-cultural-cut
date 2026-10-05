@@ -208,6 +208,7 @@ function reviewTile(review) {
     '<div class="home-review__media">' +
       coverImage(review.cover_image) +
       scoreBadge(review.score) +
+      (review.editorial_favorite ? favoriteSeal() : '') +
     '</div>' +
     '<h3 class="home-review__title">' + escapeHtml(review.title) + '</h3>' +
   '</a>';
