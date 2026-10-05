@@ -1691,3 +1691,18 @@ body.is-checking { visibility: hidden; }
   @media (max-width: 420px) {
     .footer__inner { grid-template-columns: minmax(0, 1fr); }
   }
+/* ---------- 31. Selo "Favorito da Redação" nos cards da home e das categorias ---------- */
+.home-review__media .seal {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+}
+@media (max-width: 640px) {
+  /* Em telas pequenas o selo vira só a estrela, para caber na capa */
+  .home-review__media .seal {
+    gap: 0;
+    padding: 0.25rem 0.45rem;
+    font-size: 0;
+  }
+  .home-review__media .seal::before { font-size: 0.8125rem; }
+}
