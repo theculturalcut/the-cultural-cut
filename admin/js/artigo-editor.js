@@ -5,7 +5,7 @@
 
 import { supabase, imageUrl } from '../../js/supabase.js';
 import { escapeHtml, slugify, getParam, emptyState, errorState } from '../../js/utils.js';
-import { renderMarkdown } from '../../js/conteudo.js';
+import { renderMarkdown, parseEmbed } from '../../js/conteudo.js';
 import { initAdminLayout } from './layout.js';
 import { uploadImage, isSupportedImage } from './imagens.js';
 
@@ -312,6 +312,21 @@ els.toolbar.addEventListener('click', (event) => {
       if (url && url.trim()) surround('[', '](' + url.trim() + ')', 'texto do link');
       break;
     }
+
+          case 'embed': {
+      const input = window.prompt('Cole o link do YouTube ou do Spotify (ou o código de incorporação):');
+      if (!input || !input.trim()) break;
+      const embed = parseEmbed(input);
+      if (!embed) {
+        setTextStatus('Esse link não é do YouTube nem do Spotify. Confira o endereço e tente de novo.', true);
+        break;
+      }
+      setTextStatus('');
+      rememberPosition();
+      insertBlock('[embed](' + embed.url + ')');
+      break;
+    }
+      
     case 'table':
       rememberPosition();
       insertBlock('| Coluna 1 | Coluna 2 |\n| --- | --- |\n| Texto | Texto |');
