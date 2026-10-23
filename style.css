@@ -1706,3 +1706,16 @@ body.is-checking { visibility: hidden; }
   }
   .home-review__media .seal::before { font-size: 0.8125rem; }
 }
+
+/* ---------- 32. Vídeos e músicas incorporados ---------- */
+.embed { max-width: 100%; }
+.embed iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+.embed--youtube iframe {
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+.embed--spotify iframe { border-radius: 12px; }
